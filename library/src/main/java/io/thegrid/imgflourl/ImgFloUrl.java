@@ -15,6 +15,13 @@ public class ImgFloUrl {
   private final String key;
   private final String secret;
 
+  /**
+   * Creates a new ImgFloUrl instance
+   *
+   * @param server The base url of the ImgFlo server
+   * @param key The authentication key
+   * @param secret The authentication secret
+   */
   public ImgFloUrl(String server, String key, String secret) {
     this.server = server.endsWith("/")
         ? server.replaceAll("/+$", "")
@@ -23,6 +30,12 @@ public class ImgFloUrl {
     this.secret = secret;
   }
 
+  /**
+   * Builds an authenticated ImgFlo url
+   * @param graph The {@link Graph} to be used for processing
+   * @param source The URL of the source image
+   * @return The ImgFlo url
+   */
   public String build(Graph graph, String source) {
     String graphName = graph.getName();
     String extension = getExtension(source);
