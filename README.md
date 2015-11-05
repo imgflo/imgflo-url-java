@@ -1,3 +1,5 @@
+[![Build Status](https://magnum.travis-ci.com/the-grid/imgflo-url-java.svg?token=9xAVMRcpBzfSYDP6cJdk&branch=master)](https://magnum.travis-ci.com/the-grid/imgflo-url-java)
+
 # ImgFlo-URL.java
 
 Conveniently produce authorized [imgflo](https://github.com/jonnor/imgflo) URLs on the JVM.
