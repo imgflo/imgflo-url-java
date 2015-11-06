@@ -29,4 +29,18 @@ public class ImgFloUrlTest {
     String result = imgFloUrl.build(graph, input);
     assertThat(result).isEqualTo("https://imgflo.herokuapp.com/graph/test-key/1dd0e14cf293a3981d739c91d262fd2c/passthrough.png?input=https%3A%2F%2Fs.gravatar.com%2Favatar%2F5d6489ce2e228503e0244878f4a82707%3Fd%3Dhttps%253A%252F%252Fpassport.thegrid.io%252Fprofile-fallback.png&width=100");
   }
+
+  @Test public void shouldRequestPngForTiffImages() {
+    Graph graph = new Graph.Passthrough(100, 100);
+    String input = "https://corner.squareup.com/images/hero.tif";
+
+    String result = imgFloUrl.build(graph, input);
+    assertThat(result).isEqualTo("https://imgflo.herokuapp.com/graph/test-key/e8903e3ce87c644ed64ad231bbe85921/passthrough.png?input=https%3A%2F%2Fcorner.squareup.com%2Fimages%2Fhero.tif&height=100&width=100");
+  }
+
+  @Test public void shouldIgnoreGif() {
+    Graph graph = new Graph.Passthrough(100, 100);
+    String input = "https://corner.squareup.com/images/hero.gif";
+    assertThat(imgFloUrl.build(graph, input)).isEqualTo(input);
+  }
 }

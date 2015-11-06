@@ -45,6 +45,10 @@ public class ImgFloUrl {
       return source;
     }
 
+    if ("tif".equals(extension) || "tiff".equals(extension)) {
+      extension = "png";
+    }
+
     if (extension != null) {
       graphName = graphName + "." + extension;
     }
