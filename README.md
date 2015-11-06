@@ -1,4 +1,4 @@
-[![Build Status](https://magnum.travis-ci.com/the-grid/imgflo-url-java.svg?token=9xAVMRcpBzfSYDP6cJdk&branch=master)](https://magnum.travis-ci.com/the-grid/imgflo-url-java)
+[![Build Status](https://travis-ci.org/the-grid/imgflo-url-java.svg?branch=master)](https://travis-ci.org/the-grid/imgflo-url-java)
 
 # ImgFlo-URL.java
 
