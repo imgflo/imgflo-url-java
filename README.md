@@ -21,7 +21,9 @@ Find the [latest version.](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22img
 
 ### Gradle
 
-`compile 'io.thegrid.imgflourl:imgflourl:[latest-version]'`
+```groovy
+compile 'io.thegrid.imgflourl:imgflourl:[latest-version]'
+```
 
 ### Maven
 
