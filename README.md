@@ -17,8 +17,21 @@ String result = imgFloUrl.build(graph, input);
 
 ## Installation
 
-tbd.
+Find the [latest version.](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22imgflourl%22)
 
+### Gradle
+
+`compile 'io.thegrid.imgflourl:imgflourl:[latest-version]'`
+
+### Maven
+
+```xml
+<dependency>
+  <groupId>io.thegrid.imgflourl</groupId>
+  <artifactId>imgflourl</artifactId>
+  <version>[latest version]</version>
+</dependency>
+```
 
 ## License
 
