@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+jar {
+  manifest {
+    attributes 'Main-Class': 'io.thegrid.imgflourl.Main'
+  }
+
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
+
+dependencies {
+  compile project(':library')
+}
