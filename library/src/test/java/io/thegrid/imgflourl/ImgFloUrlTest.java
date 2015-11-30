@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.in;
+import static org.junit.Assert.fail;
 
 public class ImgFloUrlTest {
   private ImgFloUrl imgFloUrl;
@@ -38,9 +40,14 @@ public class ImgFloUrlTest {
     assertThat(result).isEqualTo("https://imgflo.herokuapp.com/graph/test-key/e8903e3ce87c644ed64ad231bbe85921/passthrough.png?input=https%3A%2F%2Fcorner.squareup.com%2Fimages%2Fhero.tif&height=100&width=100");
   }
 
-  @Test public void shouldIgnoreGif() {
-    Graph graph = new Graph.Passthrough(100, 100);
+  @Test public void shouldForceNoOpOnGif() {
     String input = "https://corner.squareup.com/images/hero.gif";
-    assertThat(imgFloUrl.build(graph, input)).isEqualTo(input);
+    Graph graph = new Graph.Passthrough(100, 200);
+    String result = imgFloUrl.build(graph, input);
+
+    Graph noOp = new Graph.NoOp();
+    String expected = imgFloUrl.build(noOp, input);
+
+    assertThat(result).isEqualTo(expected);
   }
 }

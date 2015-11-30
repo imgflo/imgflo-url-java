@@ -37,13 +37,14 @@ public class ImgFloUrl {
    * @return The ImgFlo url
    */
   public String build(Graph graph, String source) {
-    String graphName = graph.getName();
     String extension = getExtension(source);
 
-    // ImgFlo doesn't support gif
+    // ImgFlo doesn't support gif transformations
     if ("gif".equals(extension)) {
-      return source;
+      graph = new Graph.NoOp();
     }
+
+    String graphName = graph.getName();
 
     if ("tif".equals(extension) || "tiff".equals(extension)) {
       extension = "png";
