@@ -1,3 +1,8 @@
+1.1
+---
+
+- Added GradientMap graph
+
 1.0
 ---
 
