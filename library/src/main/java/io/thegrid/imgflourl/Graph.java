@@ -18,18 +18,9 @@ public abstract class Graph {
     }
   }
 
-  /**
-   * Simple graph that does nothing but resizing.
-   */
-  public static class Passthrough extends Graph {
-    /**
-     * Creates a new Passthrough graph configuration
-     *
-     * @param width  Target width of the image or {@link #NO_DIMENSION} for keeping the aspect ratio
-     * @param height Target height of the image or {@link #NO_DIMENSION} for keeping the aspect ratio
-     */
-    public Passthrough(Integer width, Integer height) {
-      super("passthrough");
+  private static abstract class WidthHeightGraph extends Graph {
+    private WidthHeightGraph(String name, Integer width, Integer height) {
+      super(name);
 
       if (height != null) {
         addParam("height", height);
@@ -37,6 +28,39 @@ public abstract class Graph {
       if (width != null) {
         addParam("width", width);
       }
+    }
+  }
+
+  /**
+   * Simple graph that does nothing but resizing.
+   */
+  public static class Passthrough extends WidthHeightGraph {
+    /**
+     * Creates a new Passthrough graph configuration
+     *
+     * @param width  Target width of the image or {@link #NO_DIMENSION} for keeping the aspect ratio
+     * @param height Target height of the image or {@link #NO_DIMENSION} for keeping the aspect ratio
+     */
+    public Passthrough(Integer width, Integer height) {
+      super("passthrough", width, height);
+    }
+  }
+
+  public static class GradientMap extends WidthHeightGraph {
+    public GradientMap(Integer width, Integer height,
+                       double stop1, double stop2, double stop3,
+                       String color1, String color2, String color3, boolean srgb) {
+      super("gradientmap", width, height);
+
+      addParam("stop1", stop1);
+      addParam("stop2", stop2);
+      addParam("stop3", stop3);
+
+      addParam("color1", color1);
+      addParam("color2", color2);
+      addParam("color3", color3);
+
+      addParam("srgb", srgb ? "True" : "False");
     }
   }
 
@@ -61,6 +85,10 @@ public abstract class Graph {
   }
 
   void addParam(String name, int value) {
+    addParam(name, String.valueOf(value));
+  }
+
+  void addParam(String name, double value) {
     addParam(name, String.valueOf(value));
   }
 }
